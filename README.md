@@ -1,4 +1,4 @@
-# ConsoleTube 0.2
+# ConsoleTube 1.0
 
 ConsoleTube - это минималистичный консольный клиент для YouTube под Linux
 
