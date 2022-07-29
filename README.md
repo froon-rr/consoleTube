@@ -8,6 +8,6 @@ ConsoleTube - это минималистичный консольный кли�
 
 `pip install pyfzf selenium`
 
-а так же установите geckodriver
+Установите [geckodriver](https://github.com/mozilla/geckodriver/releases)
 
-`wget https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux64.tar.gz`
+А так же установите [Fzf](https://github.com/junegunn/fzf/releases)
