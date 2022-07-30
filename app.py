@@ -9,8 +9,6 @@ import json
 
 
 
-
-
 fzf = FzfPrompt()
 
 options = Options()
@@ -94,18 +92,12 @@ def pre_ch_search():
     os.system("clear")
     os.system("figlet -c ConsoleTube")
     print(chose[0])
-    print('Подписаться (1), или перейти на канал (2)?')
-    while True: 
-        try:
-            if a == 'q':
-                return
-            a = int(input())
-            break
-        except:
-            print('Введите число (1 или 2)')
-    if a == 1:
+    a = fzf.prompt(['Подписаться', 'Перейти на канал'])
+    if not a:
+        return
+    elif a[0] == 'Подписаться':
         print(sub_ch(chose[0], dict_of_c1[chose[0]]))
-    elif a == 2:
+    elif a[0] == 'Перейти на канал':
         dict_of_c = {}
         driver.get(dict_of_c1[chose[0]])
         list_of_data = vidio_get(driver.find_elements(By.CSS_SELECTOR, 'div.pure-u-md-1-4'))
@@ -118,8 +110,7 @@ def pre_ch_search():
             return
         os.system("clear")
         os.system("figlet -c ConsoleTube")
-        print(chose)
-        print('Открытее видио, это может занять несколько секунд')
+        print(f'Открытее видио "{chose[0]}", это может занять несколько секунд')
         print(f"mpv {dict_of_c.get(chose[0])}")
         os.system(f"mpv {dict_of_c.get(chose[0])}")
 
@@ -142,10 +133,9 @@ def pre_search():
     chose = fzf.prompt(dict_of_c.keys())
     if not chose:
         return
-    # os.system("clear")
-    # os.system("figlet -c ConsoleTube")
-    print(chose)
-    print('Открытее видио, это может занять несколько секунд')
+    os.system("clear")
+    os.system("figlet -c ConsoleTube")
+    print(f'Открытее видио "{chose[0]}", это может занять несколько секунд')
     print(f"mpv {dict_of_c.get(chose[0])}")
     os.system(f"mpv {dict_of_c.get(chose[0])}")
 
@@ -172,14 +162,12 @@ def pre_subs():
             print("Сортировка")
             for i, j, v in list_of_data:
                 dict_of_c[f'{j} - {v}'] = i
-            # print(list(dict_of_c.keys())[1:])
             chose = fzf.prompt( list(dict_of_c.keys()))
             if not chose:
                 return
             os.system("clear")
             os.system("figlet -c ConsoleTube")
-            print(chose[0])
-            print('Открытее видио, это может занять несколько секунд')
+            print(f'Открытее видио {chose[0]}, это может занять несколько секунд')
             print(f"mpv {dict_of_c.get(chose[0])}")
             os.system(f"mpv {dict_of_c.get(chose[0])}")
 
